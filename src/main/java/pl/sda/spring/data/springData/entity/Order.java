@@ -1,13 +1,19 @@
 package pl.sda.spring.data.springData.entity;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity(name = "ORDER_")
 @NoArgsConstructor
+@Getter
 public class Order {
 
     @Id
@@ -24,11 +30,8 @@ public class Order {
         this.employee = employee;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", dateTime=" + dateTime +
-                '}';
-    }
+    //FIX ME
+    @ManyToMany
+    private Set<Product> products = new HashSet<>();
+
 }
